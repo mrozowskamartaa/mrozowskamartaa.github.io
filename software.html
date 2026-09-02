@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software | Marta Mrozowska</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="light-theme">
+    <div class="container">
+        <!-- Left Column -->
+        <div class="left-column">
+            <!-- Upper Left: Profile Picture -->
+            <div class="profile-section">
+                <div class="profile-picture">
+                    <img src="profile.jpg" alt="Marta Mrozowska" id="profile-img">
+                </div>
+            </div>
+
+            <!-- Lower Left: Contact Info -->
+            <div class="contact-section">
+                <h1>Marta Agnieszka Mrozowska</h1>
+
+                <div class="links">
+                    <a href="https://scholar.google.com/citations?user=DPFKAbUAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener">Google Scholar</a>
+                    <a href="https://www.linkedin.com/in/marta-mrozowska-0148799a/" target="_blank" rel="noopener">LinkedIn</a>
+                    <a href="https://orcid.org/0000-0002-6350-2046" target="_blank" rel="noopener">ORCID</a>
+                    <a href="https://github.com/mrozowskamartaa" target="_blank" rel="noopener">GitHub</a>
+                </div>
+
+                <p class="affiliation">
+                    Postdoctoral Researcher<br>
+                    Atmospheric and Oceanic Sciences<br>
+                    Princeton University
+                </p>
+
+                <p class="email">
+                    <a href="mailto:mm6851@princeton.edu">mm6851@princeton.edu</a>
+                </p>
+
+                <div class="theme-switcher">
+                    <button id="light-btn" class="theme-btn active">light</button>
+                    <span class="separator">|</span>
+                    <button id="dark-btn" class="theme-btn">dark</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="right-column">
+            <a href="index.html" class="home-link">← Home</a>
+
+            <div class="subpage-content">
+                <div class="software-section">
+                    <h2>Veropt</h2>
+                    <div class="software-content">
+                        <div class="software-description">
+                            <p><strong>The Versatile Optimizer</strong> | <a href="https://github.com/aster-stoustrup/veropt" target="_blank" style="color: var(--link-color);">View on GitHub →</a></p>
+
+                            <p>Veropt is a Python package that tailors Bayesian optimization to climate science problems. It consists of <strong>three modules</strong>: optimizer core, interfaces and plotting tools. While working on the optimization experiments in <a href="papers/Mrozowska2025.pdf">Mrozowska et al. (2025)</a>, together with James Avery, <strong>I developed a wrapper</strong> for the optimizer core <strong>that supported a systematic and reproducible experimental pipeline</strong>. This code was then refactored and became <strong>the interfaces module.</strong></p>
+                                
+                            <p>The current version of Veropt was developed by me, James Avery and Aster Stoustrup, and my teammates' extensive experience with scientific computing and software development taught me a great deal about good coding practices and what it takes to launch a Python package for a diverse user base.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

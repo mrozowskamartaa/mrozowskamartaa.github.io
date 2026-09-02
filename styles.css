@@ -1,0 +1,560 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Theme Variables - GitHub Light Default */
+.light-theme {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f6f8fa;
+    --text-primary: #1f2328;
+    --text-secondary: #59636e;
+    --link-color: #0969da;
+    --link-hover: #0550ae;
+    --border-color: #d1d9e0;
+}
+
+/* Theme Variables - GitHub Dark Default */
+.dark-theme {
+    --bg-primary: #0d1117;
+    --bg-secondary: #161b22;
+    --text-primary: #e6edf3;
+    --text-secondary: #7d8590;
+    --link-color: #4493f8;
+    --link-hover: #539bf5;
+    --border-color: #30363d;
+}
+
+body {
+    font-family: Menlo, Monaco, Consolas, 'DejaVu Sans Mono', monospace;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Base link color for every anchor, visited or not — :where() keeps this at zero
+   specificity so any component rule below still wins. */
+:where(a, a:visited) {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+:where(a:hover) {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+/* Container with Golden Ratio Layout */
+.container {
+    display: grid;
+    grid-template-columns: 38.2% 61.8%; /* Golden ratio */
+    grid-template-rows: 50% 50%;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* Left Column */
+.left-column {
+    grid-column: 1;
+    grid-row: 1 / 3;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-section {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 2rem;
+}
+
+.profile-picture {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--border-color);
+}
+
+.profile-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Placeholder for profile picture */
+#profile-img {
+    background: var(--bg-secondary);
+}
+
+.contact-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 2rem;
+    text-align: center;
+}
+
+.contact-section h1 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+}
+
+.links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.links a {
+    color: var(--link-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+}
+
+.links a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+.affiliation {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.email {
+    margin-bottom: 1.5rem;
+}
+
+.email a {
+    color: var(--link-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.email a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+.theme-switcher {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.theme-btn {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.9rem;
+    padding: 0.25rem 0.5rem;
+    transition: color 0.2s ease;
+}
+
+.theme-btn:hover {
+    color: var(--text-primary);
+}
+
+.theme-btn.active {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.separator {
+    color: var(--text-secondary);
+}
+
+/* Right Column */
+.right-column {
+    grid-column: 2;
+    grid-row: 1 / 3;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;  /* Allow children to scroll instead of stretching the grid */
+}
+
+.highlights-section {
+    flex: 1;
+    padding: 3rem 3rem 0rem 3rem;  /* No top padding */
+    display: grid;
+    align-content: end;  /* Use grid instead of flex */
+    overflow-y: auto;
+}
+
+.highlights-section p {
+    max-width: 40rem;  /* Shortens lines from the right only */
+    margin-bottom: 0rem;
+    color: var(--text-primary);
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.main-nav {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 3rem;
+    gap: 1rem;
+}
+
+.nav-link {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: color 0.2s ease, transform 0.2s ease;
+    display: block;
+}
+
+.nav-link:hover {
+    color: var(--link-color);
+    transform: translateX(10px);
+}
+
+/* Subpage Styles */
+/* Subpages reuse .container / .left-column / .right-column from the home page.
+   Only the right column scrolls; the left column stays fixed in the viewport. */
+.subpage-content {
+    flex: 1;
+    min-height: 0;  /* Required so overflow-y actually scrolls inside the flex column */
+    padding: 0 3rem 3rem 3rem;  /* Top spacing comes from .home-link */
+    overflow-y: auto;
+}
+
+.home-link {
+    flex: none;
+    align-self: flex-start;  /* Keep the click target on the text, not the whole row */
+    margin: 3rem 3rem 1.5rem 3rem;
+    color: var(--link-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.home-link:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+/* Readable line length for all subpage prose.
+   1ch is the width of "0" — in a monospace font that is exactly one character,
+   so 70ch caps lines at ~70 characters (comfortable range is 45-75). */
+.topic-description,
+.software-description,
+.fieldwork-description,
+.fieldwork-image,
+.teaching-topic p,
+.teaching-topic ul,
+.publications li {
+    max-width: 70ch;
+}
+
+/* Research Page Styles */
+.research-topic {
+    margin-bottom: 4rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.research-topic:last-child {
+    border-bottom: none;
+}
+
+.research-topic h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+}
+
+.topic-content {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.topic-description {
+    color: var(--text-primary);
+    line-height: 1.7;
+}
+
+.topic-image {
+    width: 100%;
+    height: 200px;
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    border: 1px solid var(--border-color);
+}
+
+.topic-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.publications {
+    margin-top: 1rem;
+}
+
+.publications h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+}
+
+.publications ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.publications li {
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.publications a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+.publications a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+.poster-links {
+    margin-top: 1rem;
+}
+
+.poster-links a {
+    color: var(--link-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin-right: 1rem;
+}
+
+.poster-links a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+/* Software Page Styles */
+.software-section {
+    margin-bottom: 3rem;
+}
+
+.software-section h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+}
+
+.software-content {
+    display: grid;
+    grid-template-columns: 1fr;  /* Visual sits below the text, not beside it */
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.software-description {
+    color: var(--text-primary);
+    line-height: 1.7;
+}
+
+.software-description p {
+    margin-bottom: 1rem;
+}
+
+.software-description p:last-child {
+    margin-bottom: 0;
+}
+
+.software-visual {
+    width: 100%;
+    min-height: 300px;
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+}
+
+/* Teaching Page Styles */
+.teaching-topic {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.teaching-topic:last-child {
+    border-bottom: none;
+}
+
+.teaching-topic h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.teaching-topic p {
+    color: var(--text-primary);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+.teaching-topic a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+.teaching-topic a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+/* Fieldwork Page Styles */
+.fieldwork-section {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+}
+
+.fieldwork-section h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+}
+
+.fieldwork-content {
+    display: grid;
+    grid-template-columns: 1fr;  /* Photo sits below the text, not beside it */
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.fieldwork-image {
+    width: 100%;
+    height: 450px;
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    overflow: hidden;
+}
+
+.fieldwork-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.fieldwork-description {
+    color: var(--text-primary);
+    line-height: 1.7;
+}
+
+.fieldwork-description p {
+    margin-bottom: 1rem;
+}
+
+.fieldwork-description p:last-child {
+    margin-bottom: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        height: auto;
+    }
+
+    .left-column {
+        grid-row: auto;
+    }
+
+    .profile-section {
+        padding: 2rem;
+        align-items: center;
+    }
+
+    .right-column {
+        grid-row: auto;
+    }
+}
+
+/* Subpage content now lives in the 61.8% column, so stack its side-by-side
+   grids well before the columns themselves stack */
+@media (max-width: 1400px) {
+    .topic-content {
+        grid-template-columns: 1fr;
+    }
+
+    .topic-image {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .highlights-section,
+    .main-nav {
+        padding: 2rem;
+    }
+
+    .subpage-content {
+        padding: 0 2rem 2rem 2rem;
+    }
+
+    .home-link {
+        margin: 2rem 2rem 1rem 2rem;
+    }
+
+    .profile-picture {
+        width: 150px;
+        height: 150px;
+    }
+
+    .contact-section h1 {
+        font-size: 1.5rem;
+    }
+
+    .links {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research | Marta Mrozowska</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="light-theme">
+    <div class="container">
+        <!-- Left Column -->
+        <div class="left-column">
+            <!-- Upper Left: Profile Picture -->
+            <div class="profile-section">
+                <div class="profile-picture">
+                    <img src="profile.jpg" alt="Marta Mrozowska" id="profile-img">
+                </div>
+            </div>
+
+            <!-- Lower Left: Contact Info -->
+            <div class="contact-section">
+                <h1>Marta Agnieszka Mrozowska</h1>
+
+                <div class="links">
+                    <a href="https://scholar.google.com/citations?user=DPFKAbUAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener">Google Scholar</a>
+                    <a href="https://www.linkedin.com/in/marta-mrozowska-0148799a/" target="_blank" rel="noopener">LinkedIn</a>
+                    <a href="https://orcid.org/0000-0002-6350-2046" target="_blank" rel="noopener">ORCID</a>
+                    <a href="https://github.com/mrozowskamartaa" target="_blank" rel="noopener">GitHub</a>
+                </div>
+
+                <p class="affiliation">
+                    Postdoctoral Researcher<br>
+                    Atmospheric and Oceanic Sciences<br>
+                    Princeton University
+                </p>
+
+                <p class="email">
+                    <a href="mailto:mm6851@princeton.edu">mm6851@princeton.edu</a>
+                </p>
+
+                <div class="theme-switcher">
+                    <button id="light-btn" class="theme-btn active">light</button>
+                    <span class="separator">|</span>
+                    <button id="dark-btn" class="theme-btn">dark</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="right-column">
+            <a href="index.html" class="home-link">← Home</a>
+
+            <div class="subpage-content">
+                <div class="research-topic">
+                    <h2>Hybrid parameterizations</h2>
+                    <div class="topic-content">
+                        <div class="topic-description">
+                            <p>In the Modular Ocean Model, the depth of the oceanic boundary layer is calculated from the rate of conversion of turbulent kinetic energy to potential energy. My current work replaces the algebraic formula for the energy conversion with a neural network to improve the physical realism of the scheme.</p>
+                        </div>
+                        <div class="topic-image">
+                            <img src="images/epbl.png">
+                        </div>
+                    </div>
+                        <div class="publications">
+                            <h3>Related works</h3>
+                        </div>
+                    <div class="poster-links">
+                        <a href="posters/osm26.pdf">Mrozowska et al. (2026) A data-driven parameterization of potential energy conversion rate of vertical mixing due to Langmuir turbulence. Ocean Sciences Meeting.</a>
+                    </div>
+                </div>
+
+                <div class="research-topic">
+                    <h2>Bayesian optimization</h2>
+                    <div class="topic-content">
+                        <div class="topic-description">
+                            <p>Using <a href="software.html">Veropt</a>, we calibrated the parameters of the JAX ocean model Veros to reduce the global mixed layer depth biases. We found that in the simulations for which the biases were minimized, the zonal winds were 10% weaker and the Gent-McWilliams mesoscale eddy diffusion coefficient was halved.</p>
+                        </div>
+                        <div class="topic-image">
+                            <img src="images/bo.png">
+                        </div>
+                    </div>
+                    <div class="publications">
+                        <h3>Related works</h3>
+                        <ul>
+                            <li><a href="https://www.youtube.com/watch?v=ZWhdm3rxrIs">Keynote presentation at the DRAKKAR Workshop 2025</a></li>
+                            <li><a href="papers/Mrozowska2025.pdf">Mrozowska et al. (2025a) Bayesian optimization with GPU acceleration for ocean models. JGR: Machine Learning and Computation.</a></li>
+                            <li><a href="posters/grc25.pdf">Mrozowska et al. (2025b) Bayesian optimization of GPU-accelerated ocean models. GRC: Machine Learning for Actionable Science.</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="research-topic">
+                    <h2>NIW-induced mixing</h2>
+                    <div class="topic-content">
+                        <div class="topic-description">
+                            <p>Shear generated by near-inertial waves can deepen the surface mixed layer in the ocean. In this work, we investigated how well this process is reproduced by two eddy-resolving ocean models. We found that NIW-induced mixing was underrepresented in both models. Additionally, NIW amplitude biases were sensitive to the turbulence closure used and its parameter values.</p>
+                        </div>
+                        <div class="topic-image">
+                            <img src="images/niw.png">
+                        </div>
+                    </div>
+                    <div class="publications">
+                        <h3>Related works</h3>
+                        <ul>
+                            <li><a href="papers/Mrozowska2024.pdf">Mrozowska et al. (2024) Using NIW observations to assess mixed layer parameterizations: a case study in the tropical Atlantic. JGR: Oceans.</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
