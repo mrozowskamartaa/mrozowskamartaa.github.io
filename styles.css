@@ -52,7 +52,7 @@ body {
     grid-template-columns: 38.2% 61.8%; /* Golden ratio */
     grid-template-rows: 50% 50%;
     height: 100vh;
-    width: 100%;
+    width: 100vw;
 }
 
 /* Left Column */
@@ -501,9 +501,14 @@ body {
         grid-template-columns: 1fr;
         grid-template-rows: auto;
         height: auto;
+        width: 100%;  /* Not 100vw: the page scrolls now, and 100vw ignores the scrollbar */
     }
 
-    .left-column {
+    /* Both columns drop into the single column track, stacking in DOM order:
+       left column (profile + contact) first, right column below it. */
+    .left-column,
+    .right-column {
+        grid-column: 1;
         grid-row: auto;
     }
 
@@ -512,8 +517,11 @@ body {
         align-items: center;
     }
 
-    .right-column {
-        grid-row: auto;
+    /* The panes scroll independently on desktop; stacked, they should just grow
+       and let the page itself scroll. */
+    .highlights-section,
+    .subpage-content {
+        overflow-y: visible;
     }
 }
 
